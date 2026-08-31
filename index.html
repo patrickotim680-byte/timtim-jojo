@@ -11,322 +11,47 @@
     content="Timtim Jojo — exploring technology, experimenting with ideas, and building useful digital experiences."
   >
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #080808;
-      --surface: #101010;
-      --border: #242424;
-      --text: #f5f5f5;
-      --muted: #888;
-      --soft: #b5b5b5;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1100px, 88%);
-      margin: auto;
-    }
-
-    /* NAVIGATION */
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(8, 8, 8, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 14px;
-      transition: 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 88vh;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-content {
-      max-width: 850px;
-      padding: 80px 0;
-    }
-
-    .eyebrow {
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 28px;
-    }
-
-    h1 {
-      font-size: clamp(55px, 10vw, 110px);
-      line-height: 0.92;
-      letter-spacing: -6px;
-      margin-bottom: 35px;
-    }
-
-    .hero-text {
-      max-width: 650px;
-      color: var(--soft);
-      font-size: 19px;
-      line-height: 1.8;
-      margin-bottom: 42px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .button {
-      padding: 14px 22px;
-      border: 1px solid #3a3a3a;
-      font-size: 14px;
-      transition: 0.25s ease;
-    }
-
-    .button:hover {
-      background: white;
-      color: black;
-      border-color: white;
-    }
-
-    .button.primary {
-      background: white;
-      color: black;
-      border-color: white;
-    }
-
-    .button.primary:hover {
-      background: transparent;
-      color: white;
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 110px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .section-label {
-      color: #666;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 15px;
-    }
-
-    .section-title {
-      font-size: clamp(32px, 5vw, 55px);
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-    }
-
-    .section-description {
-      color: var(--muted);
-      max-width: 650px;
-      margin-bottom: 45px;
-    }
-
-    /* CARDS */
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 32px;
-      min-height: 220px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #444;
-    }
-
-    .card-number {
-      color: #555;
-      font-size: 13px;
-      margin-bottom: 55px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* ABOUT */
-
-    .about {
-      max-width: 750px;
-    }
-
-    .about p {
-      color: var(--soft);
-      font-size: 18px;
-      line-height: 1.9;
-    }
-
-    /* CONTACT */
-
-    .contact-box {
-      border: 1px solid var(--border);
-      background: var(--surface);
-      padding: 45px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .contact-box h3 {
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-    }
-
-    /* FOOTER */
-
-    footer {
-      padding: 30px 0;
-      color: #555;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 700px) {
-
-      .nav-inner {
-        height: auto;
-        padding: 20px 0;
-        align-items: flex-start;
-        gap: 20px;
-      }
-
-      .nav-links {
-        gap: 12px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-
-      .nav-links a {
-        font-size: 12px;
-      }
-
-      .hero {
-        min-height: 80vh;
-      }
-
-      h1 {
-        letter-spacing: -4px;
-      }
-
-      .hero-text {
-        font-size: 16px;
-      }
-
-      section {
-        padding: 80px 0;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-box {
-        padding: 30px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
   <!-- NAVIGATION -->
 
-  <nav>
+  <nav class="navbar">
+
     <div class="container nav-inner">
 
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         TIMTIM JOJO
       </a>
 
       <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#lab">Lab</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+        <a href="index.html" class="active">
+          Home
+        </a>
+
+        <a href="projects.html">
+          Projects
+        </a>
+
+        <a href="lab.html">
+          Lab
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
       </div>
 
     </div>
+
   </nav>
 
 
@@ -335,6 +60,7 @@
   <main>
 
     <section class="hero">
+
       <div class="container">
 
         <div class="hero-content">
@@ -356,11 +82,11 @@
 
           <div class="buttons">
 
-            <a href="#projects" class="button primary">
+            <a href="projects.html" class="button primary">
               Explore Projects
             </a>
 
-            <a href="#lab" class="button">
+            <a href="lab.html" class="button">
               Enter the Lab →
             </a>
 
@@ -369,12 +95,13 @@
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- PROJECTS -->
+    <!-- PROJECTS PREVIEW -->
 
-    <section id="projects">
+    <section class="section" id="projects">
 
       <div class="container">
 
@@ -388,29 +115,42 @@
 
         <p class="section-description">
           A growing collection of projects, experiments and ideas.
-          This section will eventually be connected to your private
-          admin dashboard.
         </p>
 
         <div class="grid">
 
-          <div class="card">
-            <div class="card-number">PROJECT 01</div>
-            <h3>AI Experiments</h3>
-            <p>
-              Exploring artificial intelligence and discovering
-              practical ways to use it.
-            </p>
-          </div>
+          <a href="projects.html" class="card">
 
-          <div class="card">
-            <div class="card-number">PROJECT 02</div>
-            <h3>Web Experiences</h3>
+            <div class="card-number">
+              PROJECTS
+            </div>
+
+            <h3>
+              Explore Projects →
+            </h3>
+
             <p>
-              Building clean, responsive and useful websites
-              for the modern web.
+              See the things being built, tested and explored.
             </p>
-          </div>
+
+          </a>
+
+
+          <a href="lab.html" class="card">
+
+            <div class="card-number">
+              TECH LAB
+            </div>
+
+            <h3>
+              Enter the Lab →
+            </h3>
+
+            <p>
+              Explore experiments, tools and technology ideas.
+            </p>
+
+          </a>
 
         </div>
 
@@ -419,73 +159,31 @@
     </section>
 
 
-    <!-- LAB -->
+    <!-- ABOUT PREVIEW -->
 
-    <section id="lab">
-
-      <div class="container">
-
-        <div class="section-label">
-          02 / Tech Lab
-        </div>
-
-        <h2 class="section-title">
-          Experiment. Build. Learn.
-        </h2>
-
-        <p class="section-description">
-          The Lab will be the interactive side of Timtim Jojo —
-          a place for tools, experiments and technology projects.
-        </p>
-
-        <div class="grid">
-
-          <div class="card">
-            <div class="card-number">LAB 01</div>
-            <h3>AI Tools</h3>
-            <p>
-              Small AI-powered tools and experiments.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="card-number">LAB 02</div>
-            <h3>Developer Tools</h3>
-            <p>
-              Useful tools for developers and curious minds.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
+    <section class="section">
 
       <div class="container">
 
         <div class="section-label">
-          03 / About
+          02 / About
         </div>
 
-        <div class="about">
+        <div class="about-preview">
 
           <h2 class="section-title">
             Curiosity drives everything.
           </h2>
 
-          <p>
+          <p class="section-description">
             Timtim Jojo is a personal technology space built around
             curiosity, experimentation and the desire to understand
             how digital technology can be used to create useful things.
-            This is where ideas become projects, experiments become
-            lessons, and learning becomes something you can share.
           </p>
+
+          <a href="about.html" class="text-link">
+            Read more about Timtim Jojo →
+          </a>
 
         </div>
 
@@ -496,18 +194,26 @@
 
     <!-- CONTACT -->
 
-    <section id="contact">
+    <section class="section" id="contact">
 
       <div class="container">
 
         <div class="contact-box">
 
           <div>
-            <h3>Let's build something.</h3>
+
+            <div class="section-label">
+              03 / Contact
+            </div>
+
+            <h2>
+              Let's build something.
+            </h2>
 
             <p>
               More ways to connect will be added here.
             </p>
+
           </div>
 
           <a href="mailto:" class="button primary">
@@ -523,11 +229,21 @@
   </main>
 
 
+  <!-- FOOTER -->
+
   <footer>
+
     <div class="container">
-      © 2026 Timtim Jojo. Built with curiosity.
+
+      © 2026 Timtim Jojo.
+      Built with curiosity.
+
     </div>
+
   </footer>
+
+
+  <script src="js/main.js"></script>
 
 </body>
 </html>
