@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Timtim Jojo | Technology & Innovation</title>
+
+  <meta
+    name="description"
+    content="Timtim Jojo — exploring technology, building useful things, and experimenting with the future."
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0a0a;
+      color: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 7%;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: calc(100vh - 85px);
+      display: flex;
+      align-items: center;
+      padding: 80px 7%;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .tag {
+      color: #888;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 9vw, 100px);
+      line-height: 0.95;
+      letter-spacing: -5px;
+      margin-bottom: 30px;
+    }
+
+    .description {
+      color: #aaa;
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 22px;
+      border: 1px solid #444;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      background: white;
+      color: black;
+    }
+
+    .button.primary {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    .button.primary:hover {
+      background: transparent;
+      color: white;
+    }
+
+    footer {
+      padding: 25px 7%;
+      border-top: 1px solid #222;
+      color: #666;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 22px 6%;
+      }
+
+      nav a {
+        margin-left: 12px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 60px 6%;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">TIMTIM JOJO</div>
+
+    <div>
+      <a href="#projects">Projects</a>
+      <a href="#lab">Lab</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+
+    <div class="hero-content">
+
+      <div class="tag">
+        Technology · Creativity · Innovation
+      </div>
+
+      <h1>
+        Building<br>
+        what's next.
+      </h1>
+
+      <p class="description">
+        I'm Timtim Jojo. I explore technology, experiment with
+        new ideas, and build useful things for the digital world.
+      </p>
+
+      <div class="buttons">
+        <a class="button primary" href="#projects">
+          Explore Projects
+        </a>
+
+        <a class="button" href="#lab">
+          Enter the Lab →
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    © 2026 Timtim Jojo. Built with curiosity.
+  </footer>
+
+</body>
+</html>
