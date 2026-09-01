@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Timtim Jojo — Technology & Innovation</title>
 
@@ -19,48 +23,82 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    /* =====================================================
-       TIMTIM JOJO — VISUAL HOMEPAGE
-       Smoked Glass / Cinematic Display
-       ===================================================== */
+    /* =========================================================
+       TIMTIM JOJO — PREMIUM HERO DISPLAY
+       Smoked Glass / Cinematic Technology Interface
+       ========================================================= */
 
     .hero-visual {
       position: relative;
       width: 100%;
-      max-width: 1080px;
-      margin: 20px auto 0;
-      padding: 0 5%;
+      margin-top: 42px;
+      perspective: 1400px;
     }
 
     .glass-display {
       position: relative;
-      overflow: hidden;
       width: 100%;
       min-height: 420px;
-
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 42px;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,.12),
-          rgba(255,255,255,.025)
-        );
-
+      overflow: hidden;
+      border-radius: 34px;
+      isolation: isolate;
+      background: #080808;
+      border: 1px solid rgba(255,255,255,0.18);
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.3),
-        inset 0 -1px 0 rgba(255,255,255,.04),
-        0 35px 100px rgba(0,0,0,.65);
-
-      backdrop-filter: blur(22px) saturate(120%);
-      -webkit-backdrop-filter: blur(22px) saturate(120%);
-
+        0 35px 90px rgba(0,0,0,0.55),
+        0 10px 30px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.28),
+        inset 0 -1px 0 rgba(255,255,255,0.06);
       transform: translateZ(0);
+      transition:
+        transform 0.8s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.8s ease,
+        border-color 0.8s ease;
     }
 
-    .glass-display::before {
-      content: "";
+    .glass-display:hover {
+      transform: translateY(-5px) scale(1.006);
+      border-color: rgba(255,255,255,0.28);
+      box-shadow:
+        0 45px 110px rgba(0,0,0,0.62),
+        0 15px 40px rgba(0,0,0,0.38),
+        inset 0 1px 0 rgba(255,255,255,0.34);
+    }
+
+    /* Main photograph */
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+
+      filter:
+        grayscale(1)
+        contrast(1.08)
+        brightness(0.72);
+
+      transform: scale(1.025);
+      transition:
+        transform 1.8s cubic-bezier(.16,1,.3,1),
+        filter 1s ease;
+    }
+
+    .glass-display:hover .hero-image {
+      transform: scale(1.055);
+      filter:
+        grayscale(1)
+        contrast(1.12)
+        brightness(0.76);
+    }
+
+    /* Deep smoked glass */
+
+    .smoke-layer {
       position: absolute;
       inset: 0;
       z-index: 2;
@@ -68,242 +106,323 @@
 
       background:
         linear-gradient(
-          120deg,
-          rgba(255,255,255,.18),
-          transparent 18%,
+          180deg,
+          rgba(0,0,0,0.12) 0%,
+          rgba(0,0,0,0.02) 30%,
+          rgba(0,0,0,0.25) 58%,
+          rgba(0,0,0,0.78) 100%
+        ),
+        radial-gradient(
+          circle at 20% 5%,
+          rgba(255,255,255,0.15),
+          transparent 32%
+        ),
+        radial-gradient(
+          circle at 85% 70%,
+          rgba(255,255,255,0.06),
+          transparent 35%
+        );
+    }
+
+    /* Soft glass surface */
+
+    .glass-display::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          125deg,
+          rgba(255,255,255,0.18) 0%,
+          rgba(255,255,255,0.035) 18%,
+          transparent 38%,
           transparent 70%,
-          rgba(255,255,255,.04)
+          rgba(255,255,255,0.06) 100%
         );
 
-      opacity: .7;
+      opacity: 0.75;
+      mix-blend-mode: screen;
     }
+
+    /* Fine glass reflection */
 
     .glass-display::after {
       content: "";
       position: absolute;
-      z-index: 3;
       inset: 1px;
-
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: 41px;
-
-      pointer-events: none;
-    }
-
-    .hero-image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-
-      object-fit: cover;
-
-      opacity: .88;
-
-      filter:
-        contrast(1.08)
-        brightness(.78)
-        saturate(.82);
-
-      transform: scale(1.015);
-
-      transition:
-        transform 1.4s cubic-bezier(.16,1,.3,1),
-        filter 1s ease,
-        opacity 1s ease;
-    }
-
-    .glass-display:hover .hero-image {
-      transform: scale(1.045);
-
-      filter:
-        contrast(1.1)
-        brightness(.84)
-        saturate(.92);
-
-      opacity: .96;
-    }
-
-    .smoke-layer {
-      position: absolute;
-      z-index: 1;
-      inset: 0;
-
-      pointer-events: none;
-
-      background:
-        radial-gradient(
-          circle at 20% 20%,
-          rgba(255,255,255,.12),
-          transparent 28%
-        ),
-        radial-gradient(
-          circle at 85% 75%,
-          rgba(255,255,255,.08),
-          transparent 30%
-        ),
-        linear-gradient(
-          115deg,
-          rgba(0,0,0,.25),
-          rgba(0,0,0,.04),
-          rgba(0,0,0,.4)
-        );
-
-      mix-blend-mode: screen;
-      opacity: .45;
-    }
-
-    .glass-caption {
-      position: absolute;
       z-index: 5;
-
-      left: 28px;
-      right: 28px;
-      bottom: 26px;
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 20px;
-
-      padding: 18px 20px;
-
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 24px;
+      pointer-events: none;
+      border-radius: 33px;
 
       background:
-        rgba(0,0,0,.28);
-
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.14),
+          transparent 9%,
+          transparent 88%,
+          rgba(255,255,255,0.05)
+        );
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.15),
-        0 15px 40px rgba(0,0,0,.35);
+        inset 0 1px 0 rgba(255,255,255,0.22),
+        inset 0 0 0 1px rgba(255,255,255,0.035);
     }
 
-    .glass-caption strong {
-      display: block;
-
-      margin-bottom: 3px;
-
-      color: #fff;
-
-      font-size: 13px;
-      letter-spacing: .8px;
-    }
-
-    .glass-caption span {
-      color: rgba(255,255,255,.58);
-
-      font-size: 11px;
-    }
+    /* Tiny futuristic status */
 
     .display-status {
-      flex-shrink: 0;
+      position: absolute;
+      top: 22px;
+      left: 22px;
+      z-index: 7;
 
-      padding: 7px 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
 
-      border: 1px solid rgba(255,255,255,.12);
+      padding: 9px 13px;
       border-radius: 999px;
 
-      color: rgba(255,255,255,.7);
-
-      font-size: 9px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    /* =====================================================
-       VISUAL FEATURE STRIP
-       ===================================================== */
-
-    .visual-strip {
-      display: grid;
-
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 14px;
-
-      margin-top: 18px;
-    }
-
-    .visual-chip {
-      padding: 19px 20px;
-
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 23px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.055),
-          rgba(255,255,255,.018)
-        );
+      color: rgba(255,255,255,0.78);
+      background: rgba(8,8,8,0.42);
+      border: 1px solid rgba(255,255,255,0.13);
 
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
 
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.1);
+        inset 0 1px 0 rgba(255,255,255,0.1),
+        0 8px 25px rgba(0,0,0,0.18);
+    }
+
+    .display-status::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 12px rgba(255,255,255,0.8);
+      animation: statusPulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.85);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Main glass information panel */
+
+    .glass-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      z-index: 7;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding: 22px 24px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(20,20,20,0.72),
+          rgba(20,20,20,0.38)
+        );
+
+      border: 1px solid rgba(255,255,255,0.14);
+
+      backdrop-filter: blur(25px) saturate(120%);
+      -webkit-backdrop-filter: blur(25px) saturate(120%);
+
+      box-shadow:
+        0 20px 45px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 -1px 0 rgba(255,255,255,0.035);
+    }
+
+    .caption-content {
+      min-width: 0;
+    }
+
+    .caption-title {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+
+    .caption-subtitle {
+      margin: 0;
+      color: rgba(255,255,255,0.58);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .caption-badge {
+      flex-shrink: 0;
+
+      padding: 10px 14px;
+      border-radius: 999px;
+
+      color: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
+
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.09);
+    }
+
+    /* Visual feature strip */
+
+    .visual-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .visual-chip {
+      position: relative;
+      overflow: hidden;
+
+      padding: 18px 20px;
+
+      border-radius: 20px;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.055),
+          rgba(255,255,255,0.018)
+        );
+
+      border: 1px solid rgba(255,255,255,0.095);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 12px 30px rgba(0,0,0,0.18);
 
       transition:
-        transform .55s cubic-bezier(.16,1,.3,1),
-        border-color .4s ease,
-        background .4s ease;
+        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        border-color 0.45s ease,
+        background 0.45s ease;
     }
 
     .visual-chip:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.18);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.075),
+          rgba(255,255,255,0.025)
+        );
+    }
 
-      border-color:
-        rgba(255,255,255,.22);
+    .visual-chip-number {
+      display: block;
+      margin-bottom: 9px;
+
+      color: rgba(255,255,255,0.3);
+      font-size: 9px;
+      letter-spacing: 0.16em;
+    }
+
+    .visual-chip-text {
+      color: rgba(255,255,255,0.82);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Light sweep */
+
+    .glass-display .light-sweep {
+      position: absolute;
+      top: -40%;
+      left: -70%;
+      z-index: 6;
+
+      width: 38%;
+      height: 180%;
+
+      pointer-events: none;
 
       background:
-        rgba(255,255,255,.08);
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.12),
+          transparent
+        );
+
+      transform: rotate(18deg);
+      animation: glassSweep 9s ease-in-out infinite;
+      opacity: 0.42;
     }
 
-    .visual-chip small {
-      display: block;
+    @keyframes glassSweep {
+      0%, 45% {
+        left: -70%;
+      }
 
-      margin-bottom: 5px;
-
-      color: rgba(255,255,255,.38);
-
-      font-size: 9px;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
+      70%, 100% {
+        left: 135%;
+      }
     }
 
-    .visual-chip span {
-      color: rgba(255,255,255,.82);
-
-      font-size: 12px;
-    }
-
-    /* =====================================================
-       MOBILE VISUAL POLISH
-       ===================================================== */
+    /* Mobile */
 
     @media (max-width: 760px) {
 
       .hero-visual {
-        padding: 0;
-        margin-top: 10px;
+        margin-top: 32px;
       }
 
       .glass-display {
-        min-height: 330px;
-        border-radius: 31px;
+        min-height: 410px;
+        border-radius: 30px;
       }
 
       .hero-image {
-        min-height: 330px;
+        min-height: 410px;
       }
 
       .glass-display::after {
-        border-radius: 30px;
+        border-radius: 29px;
+      }
+
+      .display-status {
+        top: 17px;
+        left: 17px;
+        padding: 8px 11px;
+        font-size: 9px;
       }
 
       .glass-caption {
@@ -311,31 +430,44 @@
         right: 15px;
         bottom: 15px;
 
-        padding: 14px 15px;
+        padding: 17px 17px;
 
-        border-radius: 19px;
+        border-radius: 20px;
+      }
+
+      .caption-title {
+        font-size: 16px;
+      }
+
+      .caption-subtitle {
+        font-size: 11px;
+      }
+
+      .caption-badge {
+        padding: 8px 10px;
+        font-size: 8px;
       }
 
       .visual-strip {
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 9px;
       }
 
       .visual-chip {
-        padding: 16px 18px;
-        border-radius: 19px;
+        padding: 15px 17px;
+        border-radius: 18px;
       }
     }
 
     @media (max-width: 500px) {
 
       .glass-display {
-        min-height: 280px;
+        min-height: 390px;
         border-radius: 27px;
       }
 
       .hero-image {
-        min-height: 280px;
+        min-height: 390px;
       }
 
       .glass-display::after {
@@ -343,28 +475,28 @@
       }
 
       .glass-caption {
-        padding: 12px 13px;
+        display: block;
       }
 
-      .glass-caption strong {
-        font-size: 11px;
-      }
-
-      .glass-caption span {
-        font-size: 9px;
-      }
-
-      .display-status {
-        padding: 6px 8px;
-        font-size: 8px;
+      .caption-badge {
+        display: inline-block;
+        margin-top: 13px;
       }
     }
 
+    /* Reduced motion */
+
     @media (prefers-reduced-motion: reduce) {
 
+      .glass-display,
       .hero-image,
       .visual-chip {
         transition: none;
+      }
+
+      .glass-display .light-sweep,
+      .display-status::before {
+        animation: none;
       }
     }
   </style>
@@ -372,151 +504,163 @@
 
 <body>
 
-  <!-- =====================================================
+  <!-- =========================================================
        NAVIGATION
-       ===================================================== -->
+       ========================================================= -->
 
-  <nav class="navbar">
+  <header class="navbar">
 
-    <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      TIMTIM JOJO
+    </a>
 
-      <a href="index.html" class="logo">
-        TIMTIM JOJO
+    <nav class="nav-links" aria-label="Main navigation">
+
+      <a href="index.html" class="active">
+        Home
       </a>
 
-      <div class="nav-links">
+      <a href="projects.html">
+        Projects
+      </a>
 
-        <a href="index.html" class="active">
-          Home
-        </a>
+      <a href="lab.html">
+        Lab
+      </a>
 
-        <a href="projects.html">
-          Projects
-        </a>
+      <a href="about.html">
+        About
+      </a>
 
-        <a href="lab.html">
-          Lab
-        </a>
+      <a href="#contact">
+        Contact
+      </a>
 
-        <a href="about.html">
-          About
-        </a>
+    </nav>
 
-        <a href="#contact">
-          Contact
-        </a>
-
-      </div>
-
-    </div>
-
-  </nav>
+  </header>
 
 
-  <!-- =====================================================
-       MAIN
-       ===================================================== -->
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
 
   <main>
 
-    <!-- ===================================================
-         HERO
-         =================================================== -->
+    <section class="hero section">
 
-    <section class="hero">
+      <div class="eyebrow">
+        TECHNOLOGY · CREATIVITY · INNOVATION
+      </div>
 
-      <div class="container">
+      <h1>
+        Building<br>
+        what's next.
+      </h1>
 
-        <div class="hero-content">
+      <p class="hero-text">
+        I'm Timtim Jojo. I explore technology, experiment with ideas,
+        and build useful digital experiences while learning what comes next.
+      </p>
 
-          <div class="eyebrow">
-            Technology · Creativity · Innovation
+      <div class="hero-actions">
+
+        <a href="projects.html" class="button button-primary">
+          Explore Projects
+        </a>
+
+        <a href="lab.html" class="button button-secondary">
+          Enter the Lab →
+        </a>
+
+      </div>
+
+
+      <!-- =====================================================
+           CINEMATIC GLASS DISPLAY
+           ===================================================== -->
+
+      <div class="hero-visual">
+
+        <div class="glass-display">
+
+          <img
+            src="images/1867626.jpeg"
+            alt="Timtim Jojo technology and architecture visual"
+            class="hero-image"
+            loading="eager"
+          >
+
+          <div class="smoke-layer"></div>
+
+          <div class="light-sweep"></div>
+
+          <div class="display-status">
+            SYSTEM · EXPLORING
           </div>
 
-          <h1>
-            Building<br>
-            what's next.
-          </h1>
+          <div class="glass-caption">
 
-          <p class="hero-text">
-            I'm Timtim Jojo. I explore technology, experiment with
-            ideas, and build useful digital experiences while learning
-            what comes next.
-          </p>
+            <div class="caption-content">
 
-          <div class="buttons">
+              <h2 class="caption-title">
+                Timtim Jojo
+              </h2>
 
-            <a
-              href="projects.html"
-              class="button primary"
-            >
-              Explore Projects
-            </a>
+              <p class="caption-subtitle">
+                Technology · Experiments · Ideas
+              </p>
 
-            <a
-              href="lab.html"
-              class="button"
-            >
-              Enter the Lab →
-            </a>
+            </div>
+
+            <div class="caption-badge">
+              Exploring
+            </div>
 
           </div>
 
         </div>
 
 
-        <!-- =================================================
-             CINEMATIC GLASS DISPLAY
-             ================================================= -->
+        <!-- Visual identity cards -->
 
-        <div class="hero-visual">
+        <div class="visual-strip">
 
-          <div class="glass-display">
+          <div class="visual-chip">
 
-            <img
-              src="images/1867626.jpeg"
-              alt="Timtim Jojo visual"
-              class="hero-image"
-              loading="eager"
-            >
+            <span class="visual-chip-number">
+              01
+            </span>
 
-            <div class="smoke-layer"></div>
-
-            <div class="glass-caption">
-
-              <div>
-                <strong>Timtim Jojo</strong>
-
-                <span>
-                  Technology · Experiments · Ideas
-                </span>
-              </div>
-
-              <div class="display-status">
-                Exploring
-              </div>
-
-            </div>
+            <span class="visual-chip-text">
+              Curiosity
+            </span>
 
           </div>
 
 
-          <div class="visual-strip">
+          <div class="visual-chip">
 
-            <div class="visual-chip">
-              <small>01</small>
-              <span>Curiosity</span>
-            </div>
+            <span class="visual-chip-number">
+              02
+            </span>
 
-            <div class="visual-chip">
-              <small>02</small>
-              <span>Experimentation</span>
-            </div>
+            <span class="visual-chip-text">
+              Experimentation
+            </span>
 
-            <div class="visual-chip">
-              <small>03</small>
-              <span>Innovation</span>
-            </div>
+          </div>
+
+
+          <div class="visual-chip">
+
+            <span class="visual-chip-number">
+              03
+            </span>
+
+            <span class="visual-chip-text">
+              Innovation
+            </span>
 
           </div>
 
@@ -527,153 +671,132 @@
     </section>
 
 
-    <!-- =====================================================
+    <!-- =======================================================
          PROJECTS
-         ===================================================== -->
+         ======================================================= -->
 
-    <section
-      class="section"
-      id="projects"
-    >
+    <section class="section" id="projects">
 
-      <div class="container">
+      <div class="section-heading">
 
-        <div class="section-label">
-          01 / Projects
-        </div>
+        <span class="section-number">
+          01
+        </span>
 
-        <h2 class="section-title">
-          Things I'm building.
+        <h2>
+          Selected Projects
         </h2>
 
-        <p class="section-description">
-          A growing collection of projects, experiments and ideas.
-        </p>
-
-        <div class="grid">
-
-          <a
-            href="projects.html"
-            class="card"
-          >
-
-            <div class="card-number">
-              PROJECTS
-            </div>
-
-            <h3>
-              Explore Projects →
-            </h3>
-
-            <p>
-              See the things being built, tested and explored.
-            </p>
-
-          </a>
-
-
-          <a
-            href="lab.html"
-            class="card"
-          >
-
-            <div class="card-number">
-              TECH LAB
-            </div>
-
-            <h3>
-              Enter the Lab →
-            </h3>
-
-            <p>
-              Explore experiments, tools and technology ideas.
-            </p>
-
-          </a>
-
-        </div>
-
       </div>
 
-    </section>
+      <div class="cards">
 
+        <article class="card">
 
-    <!-- =====================================================
-         ABOUT
-         ===================================================== -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="section-label">
-          02 / About
-        </div>
-
-        <div class="about-preview">
-
-          <h2 class="section-title">
-            Curiosity drives everything.
-          </h2>
-
-          <p class="section-description">
-            Timtim Jojo is a personal technology space built around
-            curiosity, experimentation and the desire to understand
-            how digital technology can be used to create useful things.
-          </p>
-
-          <a
-            href="about.html"
-            class="text-link"
-          >
-            Read more about Timtim Jojo →
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         CONTACT
-         ===================================================== -->
-
-    <section
-      class="section"
-      id="contact"
-    >
-
-      <div class="container">
-
-        <div class="contact-box">
-
-          <div>
-
-            <div class="section-label">
-              03 / Contact
-            </div>
-
-            <h2>
-              Let's build something together.
-            </h2>
-
-            <p>
-              Have an idea, a project, or just want to connect?
-              I'd be glad to hear from you.
-            </p>
-
+          <div class="card-number">
+            01
           </div>
 
-          <a
-            href="mailto:timtimjojo931@gmail.com?subject=Hello%20Timtim%20Jojo"
-            class="button primary"
-          >
-            Contact Me →
+          <h3>
+            Digital Experiences
+          </h3>
+
+          <p>
+            Experiments focused on modern interfaces,
+            interaction, motion, and useful digital products.
+          </p>
+
+          <a href="projects.html" class="card-link">
+            View projects →
           </a>
 
-        </div>
+        </article>
+
+
+        <article class="card">
+
+          <div class="card-number">
+            02
+          </div>
+
+          <h3>
+            Technology Experiments
+          </h3>
+
+          <p>
+            A growing collection of ideas, prototypes,
+            experiments, and things worth exploring.
+          </p>
+
+          <a href="lab.html" class="card-link">
+            Visit the lab →
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         ABOUT
+         ======================================================= -->
+
+    <section class="section about-preview">
+
+      <div class="section-heading">
+
+        <span class="section-number">
+          02
+        </span>
+
+        <h2>
+          About the Space
+        </h2>
+
+      </div>
+
+      <p class="about-text">
+        Timtim Jojo is a personal technology space built around
+        curiosity, experimentation, creativity, and the constant
+        search for better ways to build.
+      </p>
+
+      <a href="about.html" class="about-link">
+        Learn more about Timtim Jojo →
+      </a>
+
+    </section>
+
+
+    <!-- =======================================================
+         CONTACT
+         ======================================================= -->
+
+    <section class="section" id="contact">
+
+      <div class="contact-box">
+
+        <span class="section-number">
+          03
+        </span>
+
+        <h2>
+          Have an idea?
+        </h2>
+
+        <p>
+          Let's explore it, experiment with it,
+          and see where it can go.
+        </p>
+
+        <a
+          href="mailto:timtimjojo931@gmail.com?subject=Hello%20Timtim%20Jojo"
+          class="button button-primary"
+        >
+          Get in touch →
+        </a>
 
       </div>
 
@@ -682,18 +805,19 @@
   </main>
 
 
-  <!-- =====================================================
+  <!-- =========================================================
        FOOTER
-       ===================================================== -->
+       ========================================================= -->
 
-  <footer>
+  <footer class="footer">
 
-    <div class="container">
+    <span>
+      © 2026 Timtim Jojo
+    </span>
 
-      © 2026 Timtim Jojo.
-      Built with curiosity.
-
-    </div>
+    <span>
+      Technology · Creativity · Innovation
+    </span>
 
   </footer>
 
