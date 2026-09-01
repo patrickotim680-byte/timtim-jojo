@@ -1,6 +1,6 @@
 /* =========================================================
    TIMTIM JOJO — MAIN JAVASCRIPT
-   Premium Motion System
+   Premium Motion System v2
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element.classList.add("reveal");
   });
 
+
   if ("IntersectionObserver" in window) {
 
     const observer = new IntersectionObserver(
@@ -24,19 +25,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
         entries.forEach((entry) => {
 
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+          if (!entry.isIntersecting) {
+            return;
           }
+
+          const element = entry.target;
+
+          /* Stagger cards slightly */
+          if (element.classList.contains("card")) {
+
+            const cards = Array.from(
+              document.querySelectorAll(".card")
+            );
+
+            const index = cards.indexOf(element);
+
+            element.style.transitionDelay =
+              `${index * 120}ms`;
+          }
+
+          element.classList.add("visible");
+
+          observer.unobserve(element);
 
         });
 
       },
       {
         threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
+        rootMargin: "0px 0px -50px 0px"
       }
     );
+
 
     revealElements.forEach((element) => {
       observer.observe(element);
@@ -64,19 +84,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (window.scrollY > 20) {
+
       navbar.style.boxShadow =
-        "0 10px 30px rgba(0, 0, 0, 0.22)";
+        "0 12px 35px rgba(0, 0, 0, 0.28)";
+
+      navbar.style.borderBottomColor =
+        "#333333";
+
     } else {
+
       navbar.style.boxShadow = "none";
+
+      navbar.style.borderBottomColor =
+        "#242424";
+
     }
 
   };
 
   updateNavbar();
 
-  window.addEventListener("scroll", updateNavbar, {
-    passive: true
-  });
+  window.addEventListener(
+    "scroll",
+    updateNavbar,
+    { passive: true }
+  );
 
 
   /* -------------------------------------------------------
@@ -91,13 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     link.addEventListener("click", (event) => {
 
-      const targetId = link.getAttribute("href");
+      const targetId =
+        link.getAttribute("href");
 
       if (!targetId || targetId === "#") {
         return;
       }
 
-      const target = document.querySelector(targetId);
+      const target =
+        document.querySelector(targetId);
 
       if (!target) {
         return;
@@ -116,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------------------------------------
-     PAGE TRANSITION
+     PAGE TRANSITIONS
      ------------------------------------------------------- */
 
   const pageLinks = document.querySelectorAll(
@@ -127,7 +161,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     link.addEventListener("click", (event) => {
 
-      const href = link.getAttribute("href");
+      const href =
+        link.getAttribute("href");
 
       if (
         !href ||
@@ -143,14 +178,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       event.preventDefault();
 
+      document.body.style.transition =
+        "opacity 0.25s ease";
+
       document.body.style.opacity = "0";
 
       setTimeout(() => {
         window.location.href = href;
-      }, 220);
+      }, 250);
 
     });
 
+  });
+
+
+  /* -------------------------------------------------------
+     PREVENT FLASH AFTER BACK/FORWARD NAVIGATION
+     ------------------------------------------------------- */
+
+  window.addEventListener("pageshow", () => {
+    document.body.style.opacity = "1";
   });
 
 });
