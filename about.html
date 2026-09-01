@@ -8,293 +8,264 @@
 
   <meta
     name="description"
-    content="About Timtim Jojo — technology, creativity, experimentation and building."
+    content="About Timtim Jojo — curiosity, technology, experimentation and building useful things."
   >
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: #080808;
-      color: #f5f5f5;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(900px, 88%);
-      margin: auto;
-    }
-
-    nav {
-      border-bottom: 1px solid #242424;
-    }
-
-    .nav-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .back {
-      color: #888;
-      font-size: 14px;
-    }
-
-    .back:hover {
-      color: white;
-    }
-
-    main {
-      padding: 100px 0;
-    }
-
-    .label {
-      color: #666;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(50px, 9vw, 90px);
-      line-height: 0.95;
-      letter-spacing: -5px;
-      margin-bottom: 40px;
-    }
-
-    .intro {
-      color: #b5b5b5;
-      font-size: 20px;
-      line-height: 1.9;
-      max-width: 720px;
-    }
-
-    .divider {
-      height: 1px;
-      background: #242424;
-      margin: 70px 0;
-    }
-
-    h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #888;
-      font-size: 17px;
-      margin-bottom: 25px;
-      max-width: 720px;
-    }
-
-    .principles {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 35px;
-    }
-
-    .principle {
-      background: #101010;
-      border: 1px solid #242424;
-      padding: 28px;
-    }
-
-    .principle span {
-      display: block;
-      color: #555;
-      font-size: 12px;
-      margin-bottom: 30px;
-    }
-
-    .principle h3 {
-      font-size: 20px;
-      margin-bottom: 8px;
-    }
-
-    .principle p {
-      font-size: 14px;
-      margin-bottom: 0;
-    }
-
-    .contact {
-      margin-top: 70px;
-      padding: 35px;
-      border: 1px solid #242424;
-      background: #101010;
-    }
-
-    .contact a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 12px 18px;
-      border: 1px solid #444;
-      font-size: 14px;
-    }
-
-    .contact a:hover {
-      background: white;
-      color: black;
-    }
-
-    footer {
-      border-top: 1px solid #242424;
-      padding: 30px 0;
-      color: #555;
-      font-size: 13px;
-    }
-
-    @media (max-width: 650px) {
-      main {
-        padding: 70px 0;
-      }
-
-      h1 {
-        letter-spacing: -3px;
-      }
-
-      .principles {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <nav>
+  <!-- NAVIGATION -->
+
+  <nav class="navbar">
+
     <div class="container nav-inner">
 
       <a href="index.html" class="logo">
         TIMTIM JOJO
       </a>
 
-      <a href="index.html" class="back">
-        ← Back home
-      </a>
+      <div class="nav-links">
 
-    </div>
-  </nav>
+        <a href="index.html">
+          Home
+        </a>
 
-  <main>
+        <a href="projects.html">
+          Projects
+        </a>
 
-    <div class="container">
+        <a href="lab.html">
+          Lab
+        </a>
 
-      <div class="label">
-        03 / About
-      </div>
-
-      <h1>
-        Curiosity<br>
-        drives everything.
-      </h1>
-
-      <div class="intro">
-        Timtim Jojo is a personal technology space built around
-        curiosity, experimentation and the desire to understand
-        how digital technology can be used to create useful things.
-      </div>
-
-      <div class="divider"></div>
-
-      <h2>The idea</h2>
-
-      <p>
-        Technology changes quickly. Instead of simply watching that
-        change happen, this space is about exploring it — learning
-        how things work, experimenting with new ideas and turning
-        interesting concepts into real projects.
-      </p>
-
-      <p>
-        Some experiments will work. Others won't. That's part of the
-        process. The goal is to keep learning, building and sharing
-        what comes out of the journey.
-      </p>
-
-      <div class="divider"></div>
-
-      <h2>What matters here</h2>
-
-      <div class="principles">
-
-        <div class="principle">
-          <span>01</span>
-          <h3>Learn</h3>
-          <p>
-            Understand technology by actually exploring it.
-          </p>
-        </div>
-
-        <div class="principle">
-          <span>02</span>
-          <h3>Build</h3>
-          <p>
-            Turn ideas into useful digital experiences.
-          </p>
-        </div>
-
-        <div class="principle">
-          <span>03</span>
-          <h3>Experiment</h3>
-          <p>
-            Try things, break things and discover what works.
-          </p>
-        </div>
-
-        <div class="principle">
-          <span>04</span>
-          <h3>Keep moving</h3>
-          <p>
-            Technology never stands still, and neither should curiosity.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="contact">
-
-        <h2>
-          Want to connect?
-        </h2>
-
-        <p>
-          More contact options will be added as the site grows.
-        </p>
+        <a href="about.html" class="active">
+          About
+        </a>
 
         <a href="index.html#contact">
-          Get in touch →
+          Contact
         </a>
 
       </div>
 
     </div>
 
+  </nav>
+
+
+  <!-- ABOUT -->
+
+  <main>
+
+    <section class="hero">
+
+      <div class="container">
+
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            04 · About
+          </div>
+
+          <h1>
+            Curiosity<br>
+            drives everything.
+          </h1>
+
+          <p class="hero-text">
+            Timtim Jojo is a personal technology space built around
+            curiosity, experimentation and the desire to understand
+            how digital technology can be used to create useful things.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STORY -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-label">
+          The idea
+        </div>
+
+        <div class="about-preview">
+
+          <h2 class="section-title">
+            Learn by building.
+          </h2>
+
+          <p class="section-description">
+            Technology changes quickly. Instead of simply watching
+            it happen, Timtim Jojo is about exploring it firsthand.
+            Ideas become experiments, experiments become projects,
+            and projects become lessons.
+          </p>
+
+          <p class="section-description">
+            This website is the home for that journey — a place to
+            document things being built, technologies being explored,
+            and ideas that might eventually become something bigger.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- VALUES -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="section-label">
+          What matters
+        </div>
+
+        <div class="grid">
+
+          <article class="card">
+
+            <div class="card-number">
+              01
+            </div>
+
+            <h3>
+              Curiosity
+            </h3>
+
+            <p>
+              Asking questions, exploring unfamiliar technology
+              and staying interested in how things work.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              02
+            </div>
+
+            <h3>
+              Experimentation
+            </h3>
+
+            <p>
+              Trying ideas, testing assumptions and learning
+              from what happens along the way.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              03
+            </div>
+
+            <h3>
+              Building
+            </h3>
+
+            <p>
+              Turning ideas into real things that can be tested,
+              improved and shared.
+            </p>
+
+          </article>
+
+
+          <article class="card">
+
+            <div class="card-number">
+              04
+            </div>
+
+            <h3>
+              Sharing
+            </h3>
+
+            <p>
+              Documenting the journey so that useful discoveries
+              can become useful knowledge.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CLOSING -->
+
+    <section class="section">
+
+      <div class="container">
+
+        <div class="contact-box">
+
+          <div>
+
+            <div class="section-label">
+              The journey
+            </div>
+
+            <h2>
+              This is only the beginning.
+            </h2>
+
+            <p>
+              More projects, experiments and ideas will appear
+              here as the journey continues.
+            </p>
+
+          </div>
+
+          <a href="projects.html" class="button primary">
+            See Projects →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
+
+  <!-- FOOTER -->
+
   <footer>
+
     <div class="container">
-      © 2026 Timtim Jojo. Built with curiosity.
+
+      © 2026 Timtim Jojo.
+      Built with curiosity.
+
     </div>
+
   </footer>
+
+
+  <script src="js/main.js"></script>
 
 </body>
 </html>
