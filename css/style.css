@@ -1,5 +1,6 @@
 /* =========================================================
    TIMTIM JOJO — MAIN STYLESHEET
+   Premium Motion System
    ========================================================= */
 
 * {
@@ -17,6 +18,9 @@
   --text: #f5f5f5;
   --muted: #888888;
   --soft: #b5b5b5;
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -28,6 +32,7 @@ body {
   color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -47,6 +52,25 @@ a {
 
 
 /* =========================================================
+   PAGE INTRO
+   ========================================================= */
+
+body {
+  animation: pageEnter 0.7s var(--ease-smooth) both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
    NAVIGATION
    ========================================================= */
 
@@ -57,6 +81,14 @@ a {
   background: rgba(8, 8, 8, 0.94);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(12px);
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.navbar:hover {
+  border-bottom-color: var(--border-light);
 }
 
 .nav-inner {
@@ -72,6 +104,14 @@ a {
   font-weight: 700;
   letter-spacing: 1.5px;
   white-space: nowrap;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s var(--ease-smooth);
+}
+
+.logo:hover {
+  opacity: 0.7;
+  transform: translateX(2px);
 }
 
 .nav-links {
@@ -81,14 +121,37 @@ a {
 }
 
 .nav-links a {
+  position: relative;
   color: var(--muted);
   font-size: 13px;
-  transition: color 0.2s ease;
+  padding: 8px 0;
+  transition:
+    color 0.25s ease,
+    transform 0.25s var(--ease-smooth);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 100%;
+  height: 1px;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s var(--ease-smooth);
 }
 
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--text);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 
@@ -105,6 +168,19 @@ a {
 
 .hero-content {
   max-width: 850px;
+  animation: heroReveal 1s 0.15s var(--ease-smooth) both;
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .eyebrow {
@@ -113,6 +189,11 @@ a {
   letter-spacing: 3px;
   font-size: 11px;
   margin-bottom: 25px;
+  transition: color 0.3s ease;
+}
+
+.eyebrow:hover {
+  color: var(--soft);
 }
 
 .hero h1 {
@@ -143,6 +224,7 @@ a {
 }
 
 .button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -151,18 +233,48 @@ a {
   border: 1px solid var(--border-light);
   color: var(--text);
   font-size: 13px;
-  transition: all 0.25s ease;
+  overflow: hidden;
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.35s var(--ease-smooth),
+    box-shadow 0.35s ease;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--text);
+  transform: translateX(-101%);
+  transition: transform 0.4s var(--ease-smooth);
+  z-index: -1;
 }
 
 .button:hover {
-  border-color: #666666;
-  transform: translateY(-2px);
+  color: #080808;
+  border-color: var(--text);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.button:hover::before {
+  transform: translateX(0);
+}
+
+.button:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .button.primary {
   background: var(--text);
   color: #080808;
   border-color: var(--text);
+}
+
+.button.primary::before {
+  background: #cccccc;
 }
 
 .button.primary:hover {
@@ -177,6 +289,24 @@ a {
 .section {
   padding: 110px 0;
   border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 90px;
+  height: 1px;
+  background: #555555;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-smooth);
+}
+
+.section:hover::before {
+  transform: scaleX(1);
 }
 
 .section-label {
@@ -185,6 +315,14 @@ a {
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 18px;
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.4s var(--ease-smooth);
+}
+
+.section:hover .section-label {
+  color: #777777;
+  letter-spacing: 3.5px;
 }
 
 .section-title {
@@ -214,35 +352,94 @@ a {
 }
 
 .card {
+  position: relative;
   display: block;
   min-height: 300px;
   padding: 32px;
   background: var(--surface);
   border: 1px solid var(--border);
-  transition: all 0.25s ease;
+  overflow: hidden;
+  transition:
+    transform 0.45s var(--ease-smooth),
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.45s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--text);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-smooth);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top right,
+    rgba(255, 255, 255, 0.045),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   border-color: #444444;
   background: var(--surface-2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover::after {
+  opacity: 1;
 }
 
 .card-number {
   color: #555555;
   font-size: 11px;
   letter-spacing: 2px;
+  transition: color 0.3s ease;
+}
+
+.card:hover .card-number {
+  color: #888888;
 }
 
 .card h3 {
   font-size: 27px;
   margin: 75px 0 12px;
+  transition:
+    transform 0.4s var(--ease-smooth),
+    color 0.3s ease;
+}
+
+.card:hover h3 {
+  transform: translateX(5px);
 }
 
 .card p {
   color: var(--muted);
   font-size: 14px;
   max-width: 450px;
+  transition: color 0.3s ease;
+}
+
+.card:hover p {
+  color: var(--soft);
 }
 
 
@@ -259,11 +456,16 @@ a {
   border-bottom: 1px solid #444444;
   padding-bottom: 5px;
   font-size: 14px;
-  transition: border-color 0.2s ease;
+  transition:
+    color 0.25s ease,
+    border-color 0.3s ease,
+    transform 0.3s var(--ease-smooth);
 }
 
 .text-link:hover {
+  color: white;
   border-color: white;
+  transform: translateX(5px);
 }
 
 
@@ -272,6 +474,7 @@ a {
    ========================================================= */
 
 .contact-box {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -279,6 +482,33 @@ a {
   padding: 45px;
   background: var(--surface);
   border: 1px solid var(--border);
+  overflow: hidden;
+  transition:
+    border-color 0.35s ease,
+    transform 0.4s var(--ease-smooth);
+}
+
+.contact-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid #444444;
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s var(--ease-smooth);
+  pointer-events: none;
+}
+
+.contact-box:hover {
+  border-color: #3a3a3a;
+  transform: translateY(-4px);
+}
+
+.contact-box:hover::before {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .contact-box h2 {
@@ -302,6 +532,29 @@ footer {
   padding: 30px 0;
   color: #555555;
   font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+footer:hover {
+  color: #777777;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.8s var(--ease-smooth),
+    transform 0.8s var(--ease-smooth);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 
@@ -334,6 +587,10 @@ footer {
 
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
   }
 
   .contact-box {
@@ -388,6 +645,27 @@ footer {
 
   .contact-box {
     padding: 30px;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 
 }
