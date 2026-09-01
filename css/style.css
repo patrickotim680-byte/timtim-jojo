@@ -1,6 +1,6 @@
 /* =========================================================
    TIMTIM JOJO — MAIN STYLESHEET
-   Premium Motion System
+   Premium Motion System v2
    ========================================================= */
 
 * {
@@ -12,15 +12,15 @@
 :root {
   --bg: #080808;
   --surface: #101010;
-  --surface-2: #141414;
+  --surface-2: #151515;
   --border: #242424;
-  --border-light: #333333;
+  --border-light: #3a3a3a;
   --text: #f5f5f5;
   --muted: #888888;
   --soft: #b5b5b5;
 
   --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html {
@@ -33,6 +33,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+  animation: pageEnter 0.9s var(--ease-smooth) both;
 }
 
 a {
@@ -52,12 +53,8 @@ a {
 
 
 /* =========================================================
-   PAGE INTRO
+   PAGE ENTRY
    ========================================================= */
-
-body {
-  animation: pageEnter 0.7s var(--ease-smooth) both;
-}
 
 @keyframes pageEnter {
   from {
@@ -80,11 +77,11 @@ body {
   z-index: 1000;
   background: rgba(8, 8, 8, 0.94);
   border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
   transition:
-    background 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    background 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.45s ease;
 }
 
 .navbar:hover {
@@ -105,13 +102,13 @@ body {
   letter-spacing: 1.5px;
   white-space: nowrap;
   transition:
-    opacity 0.25s ease,
-    transform 0.25s var(--ease-smooth);
+    opacity 0.3s ease,
+    transform 0.4s var(--ease-smooth);
 }
 
 .logo:hover {
   opacity: 0.7;
-  transform: translateX(2px);
+  transform: translateX(4px);
 }
 
 .nav-links {
@@ -126,8 +123,8 @@ body {
   font-size: 13px;
   padding: 8px 0;
   transition:
-    color 0.25s ease,
-    transform 0.25s var(--ease-smooth);
+    color 0.3s ease,
+    transform 0.3s var(--ease-smooth);
 }
 
 .nav-links a::after {
@@ -140,7 +137,7 @@ body {
   background: var(--text);
   transform: scaleX(0);
   transform-origin: right;
-  transition: transform 0.35s var(--ease-smooth);
+  transition: transform 0.45s var(--ease-smooth);
 }
 
 .nav-links a:hover,
@@ -168,18 +165,18 @@ body {
 
 .hero-content {
   max-width: 850px;
-  animation: heroReveal 1s 0.15s var(--ease-smooth) both;
+  animation: heroReveal 1.2s 0.1s var(--ease-premium) both;
 }
 
 @keyframes heroReveal {
   from {
     opacity: 0;
-    transform: translateY(35px);
+    transform: translateY(60px) scale(0.98);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -189,11 +186,14 @@ body {
   letter-spacing: 3px;
   font-size: 11px;
   margin-bottom: 25px;
-  transition: color 0.3s ease;
+  transition:
+    color 0.35s ease,
+    letter-spacing 0.5s var(--ease-smooth);
 }
 
 .eyebrow:hover {
   color: var(--soft);
+  letter-spacing: 4px;
 }
 
 .hero h1 {
@@ -234,12 +234,13 @@ body {
   color: var(--text);
   font-size: 13px;
   overflow: hidden;
+  isolation: isolate;
   transition:
-    color 0.3s ease,
-    border-color 0.3s ease,
-    background 0.3s ease,
-    transform 0.35s var(--ease-smooth),
-    box-shadow 0.35s ease;
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    transform 0.45s var(--ease-smooth),
+    box-shadow 0.45s ease;
 }
 
 .button::before {
@@ -247,24 +248,24 @@ body {
   position: absolute;
   inset: 0;
   background: var(--text);
-  transform: translateX(-101%);
-  transition: transform 0.4s var(--ease-smooth);
+  transform: translateY(101%);
+  transition: transform 0.5s var(--ease-premium);
   z-index: -1;
 }
 
 .button:hover {
   color: #080808;
   border-color: var(--text);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
 }
 
 .button:hover::before {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .button:active {
-  transform: translateY(-1px) scale(0.98);
+  transform: translateY(-1px) scale(0.97);
 }
 
 .button.primary {
@@ -287,9 +288,9 @@ body {
    ========================================================= */
 
 .section {
+  position: relative;
   padding: 110px 0;
   border-top: 1px solid var(--border);
-  position: relative;
 }
 
 .section::before {
@@ -297,12 +298,12 @@ body {
   position: absolute;
   top: -1px;
   left: 0;
-  width: 90px;
+  width: 120px;
   height: 1px;
-  background: #555555;
+  background: #777777;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.8s var(--ease-smooth);
+  transition: transform 1s var(--ease-premium);
 }
 
 .section:hover::before {
@@ -316,13 +317,13 @@ body {
   letter-spacing: 3px;
   margin-bottom: 18px;
   transition:
-    color 0.3s ease,
-    letter-spacing 0.4s var(--ease-smooth);
+    color 0.4s ease,
+    letter-spacing 0.5s var(--ease-smooth);
 }
 
 .section:hover .section-label {
-  color: #777777;
-  letter-spacing: 3.5px;
+  color: #888888;
+  letter-spacing: 4px;
 }
 
 .section-title {
@@ -360,10 +361,10 @@ body {
   border: 1px solid var(--border);
   overflow: hidden;
   transition:
-    transform 0.45s var(--ease-smooth),
-    border-color 0.35s ease,
-    background 0.35s ease,
-    box-shadow 0.45s ease;
+    transform 0.6s var(--ease-premium),
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.6s var(--ease-premium);
 }
 
 .card::before {
@@ -372,11 +373,11 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 1px;
+  height: 2px;
   background: var(--text);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.5s var(--ease-smooth);
+  transition: transform 0.65s var(--ease-premium);
 }
 
 .card::after {
@@ -385,19 +386,19 @@ body {
   inset: 0;
   background: radial-gradient(
     circle at top right,
-    rgba(255, 255, 255, 0.045),
-    transparent 40%
+    rgba(255, 255, 255, 0.07),
+    transparent 45%
   );
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.5s ease;
   pointer-events: none;
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  border-color: #444444;
+  transform: translateY(-12px) scale(1.015);
+  border-color: #4a4a4a;
   background: var(--surface-2);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
 }
 
 .card:hover::before {
@@ -412,34 +413,41 @@ body {
   color: #555555;
   font-size: 11px;
   letter-spacing: 2px;
-  transition: color 0.3s ease;
+  transition:
+    color 0.4s ease,
+    letter-spacing 0.5s var(--ease-smooth);
 }
 
 .card:hover .card-number {
-  color: #888888;
+  color: #999999;
+  letter-spacing: 2.5px;
 }
 
 .card h3 {
   font-size: 27px;
   margin: 75px 0 12px;
   transition:
-    transform 0.4s var(--ease-smooth),
-    color 0.3s ease;
+    transform 0.55s var(--ease-smooth),
+    color 0.4s ease;
 }
 
 .card:hover h3 {
-  transform: translateX(5px);
+  transform: translateX(8px);
+  color: #ffffff;
 }
 
 .card p {
   color: var(--muted);
   font-size: 14px;
   max-width: 450px;
-  transition: color 0.3s ease;
+  transition:
+    color 0.4s ease,
+    transform 0.5s var(--ease-smooth);
 }
 
 .card:hover p {
   color: var(--soft);
+  transform: translateX(3px);
 }
 
 
@@ -457,15 +465,15 @@ body {
   padding-bottom: 5px;
   font-size: 14px;
   transition:
-    color 0.25s ease,
-    border-color 0.3s ease,
-    transform 0.3s var(--ease-smooth);
+    color 0.3s ease,
+    border-color 0.4s ease,
+    transform 0.45s var(--ease-smooth);
 }
 
 .text-link:hover {
   color: white;
   border-color: white;
-  transform: translateX(5px);
+  transform: translateX(7px);
 }
 
 
@@ -484,26 +492,28 @@ body {
   border: 1px solid var(--border);
   overflow: hidden;
   transition:
-    border-color 0.35s ease,
-    transform 0.4s var(--ease-smooth);
+    border-color 0.45s ease,
+    transform 0.55s var(--ease-premium),
+    box-shadow 0.55s ease;
 }
 
 .contact-box::before {
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid #444444;
+  border: 1px solid #555555;
   opacity: 0;
-  transform: scale(0.97);
+  transform: scale(0.94);
   transition:
-    opacity 0.4s ease,
-    transform 0.5s var(--ease-smooth);
+    opacity 0.5s ease,
+    transform 0.6s var(--ease-premium);
   pointer-events: none;
 }
 
 .contact-box:hover {
-  border-color: #3a3a3a;
-  transform: translateY(-4px);
+  border-color: #444444;
+  transform: translateY(-7px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
 }
 
 .contact-box:hover::before {
@@ -532,11 +542,13 @@ footer {
   padding: 30px 0;
   color: #555555;
   font-size: 12px;
-  transition: color 0.3s ease;
+  transition:
+    color 0.4s ease,
+    padding 0.4s ease;
 }
 
 footer:hover {
-  color: #777777;
+  color: #888888;
 }
 
 
@@ -546,15 +558,15 @@ footer:hover {
 
 .reveal {
   opacity: 0;
-  transform: translateY(35px);
+  transform: translateY(65px) scale(0.97);
   transition:
-    opacity 0.8s var(--ease-smooth),
-    transform 0.8s var(--ease-smooth);
+    opacity 1s var(--ease-premium),
+    transform 1s var(--ease-premium);
 }
 
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
 
@@ -590,7 +602,7 @@ footer:hover {
   }
 
   .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-7px) scale(1.01);
   }
 
   .contact-box {
