@@ -1,6 +1,156 @@
-// TIMTIM JOJO
-// Main website interaction file
+/* =========================================================
+   TIMTIM JOJO — MAIN JAVASCRIPT
+   Premium Motion System
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Timtim Jojo website loaded.");
+
+  /* -------------------------------------------------------
+     SCROLL REVEAL
+     ------------------------------------------------------- */
+
+  const revealElements = document.querySelectorAll(
+    ".section, .card, .contact-box, .about-preview"
+  );
+
+  revealElements.forEach((element) => {
+    element.classList.add("reveal");
+  });
+
+  if ("IntersectionObserver" in window) {
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    revealElements.forEach((element) => {
+      observer.observe(element);
+    });
+
+  } else {
+
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
+    });
+
+  }
+
+
+  /* -------------------------------------------------------
+     NAVBAR SCROLL STATE
+     ------------------------------------------------------- */
+
+  const navbar = document.querySelector(".navbar");
+
+  const updateNavbar = () => {
+
+    if (!navbar) {
+      return;
+    }
+
+    if (window.scrollY > 20) {
+      navbar.style.boxShadow =
+        "0 10px 30px rgba(0, 0, 0, 0.22)";
+    } else {
+      navbar.style.boxShadow = "none";
+    }
+
+  };
+
+  updateNavbar();
+
+  window.addEventListener("scroll", updateNavbar, {
+    passive: true
+  });
+
+
+  /* -------------------------------------------------------
+     SMOOTH INTERNAL LINKS
+     ------------------------------------------------------- */
+
+  const internalLinks = document.querySelectorAll(
+    'a[href^="#"]'
+  );
+
+  internalLinks.forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+      const targetId = link.getAttribute("href");
+
+      if (!targetId || targetId === "#") {
+        return;
+      }
+
+      const target = document.querySelector(targetId);
+
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    });
+
+  });
+
+
+  /* -------------------------------------------------------
+     PAGE TRANSITION
+     ------------------------------------------------------- */
+
+  const pageLinks = document.querySelectorAll(
+    'a[href$=".html"]'
+  );
+
+  pageLinks.forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+      const href = link.getAttribute("href");
+
+      if (
+        !href ||
+        href.startsWith("#") ||
+        link.target === "_blank" ||
+        event.ctrlKey ||
+        event.metaKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      event.preventDefault();
+
+      document.body.style.opacity = "0";
+
+      setTimeout(() => {
+        window.location.href = href;
+      }, 220);
+
+    });
+
+  });
+
 });
