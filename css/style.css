@@ -7,6 +7,7 @@
 :root {
   --black: #000;
   --white: #fff;
+
   --gray-1: #f5f5f5;
   --gray-2: #c8c8c8;
   --gray-3: #888;
@@ -14,6 +15,7 @@
 
   --glass: rgba(255, 255, 255, 0.055);
   --glass-strong: rgba(255, 255, 255, 0.09);
+
   --glass-border: rgba(255, 255, 255, 0.16);
   --glass-highlight: rgba(255, 255, 255, 0.25);
 
@@ -53,7 +55,8 @@ body {
     ),
     #000;
 
-  animation: pageIn 1s var(--smooth) both;
+  animation:
+    pageIn 1s var(--smooth) both;
 }
 
 a {
@@ -82,6 +85,7 @@ a {
    ========================================================= */
 
 @keyframes pageIn {
+
   from {
     opacity: 0;
   }
@@ -89,11 +93,12 @@ a {
   to {
     opacity: 1;
   }
+
 }
 
 
 /* =========================================================
-   FLOATING GLASS NAV
+   NAVIGATION
    ========================================================= */
 
 .navbar {
@@ -106,11 +111,9 @@ a {
 
   margin: 14px auto 0;
 
-  border:
-    1px solid var(--glass-border);
+  border: 1px solid var(--glass-border);
 
-  border-radius:
-    var(--pill);
+  border-radius: var(--pill);
 
   background:
     linear-gradient(
@@ -132,10 +135,10 @@ a {
     0 18px 60px rgba(0,0,0,0.55);
 
   transition:
-    transform 0.5s var(--smooth),
     background 0.5s ease,
     border-color 0.5s ease,
-    box-shadow 0.5s ease;
+    box-shadow 0.5s ease,
+    transform 0.5s var(--smooth);
 }
 
 .navbar:hover {
@@ -187,7 +190,6 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-
   gap: 20px;
 }
 
@@ -208,7 +210,6 @@ a {
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--white);
-
   transform: translateY(-1px);
 }
 
@@ -261,7 +262,7 @@ a {
   padding:
     120px
     0
-    150px;
+    110px;
 }
 
 .hero-content {
@@ -305,23 +306,17 @@ a {
 
   margin-bottom: 30px;
 
-  border:
-    1px solid var(--glass-border);
+  border: 1px solid var(--glass-border);
 
-  border-radius:
-    var(--pill);
+  border-radius: var(--pill);
 
-  background:
-    var(--glass);
+  background: var(--glass);
 
-  backdrop-filter:
-    blur(18px);
+  backdrop-filter: blur(18px);
 
-  -webkit-backdrop-filter:
-    blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 
-  color:
-    var(--gray-2);
+  color: var(--gray-2);
 
   font-size: 10px;
 
@@ -341,8 +336,7 @@ a {
 .eyebrow:hover {
   transform: translateY(-3px);
 
-  background:
-    var(--glass-strong);
+  background: var(--glass-strong);
 
   border-color:
     rgba(255,255,255,0.25);
@@ -352,14 +346,11 @@ a {
   font-size:
     clamp(58px, 11vw, 122px);
 
-  line-height:
-    0.86;
+  line-height: 0.86;
 
-  letter-spacing:
-    -7px;
+  letter-spacing: -7px;
 
-  margin-bottom:
-    38px;
+  margin-bottom: 38px;
 }
 
 .hero-text {
@@ -376,7 +367,7 @@ a {
 
 
 /* =========================================================
-   GLASS BUTTONS
+   BUTTONS
    ========================================================= */
 
 .buttons {
@@ -402,8 +393,7 @@ a {
   border:
     1px solid var(--glass-border);
 
-  border-radius:
-    var(--pill);
+  border-radius: var(--pill);
 
   background:
     linear-gradient(
@@ -412,14 +402,11 @@ a {
       rgba(255,255,255,0.035)
     );
 
-  backdrop-filter:
-    blur(20px);
+  backdrop-filter: blur(20px);
 
-  -webkit-backdrop-filter:
-    blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 
-  color:
-    var(--white);
+  color: var(--white);
 
   font-size: 13px;
 
@@ -451,8 +438,7 @@ a {
       transparent 75%
     );
 
-  transform:
-    translateX(-120%);
+  transform: translateX(-120%);
 
   transition:
     transform 0.8s var(--premium);
@@ -475,21 +461,18 @@ a {
 }
 
 .button:hover::before {
-  transform:
-    translateX(120%);
+  transform: translateX(120%);
 }
 
 .button:active {
-  transform:
-    scale(0.97);
+  transform: scale(0.97);
 }
 
 .button.primary {
   background:
     rgba(255,255,255,0.96);
 
-  color:
-    #000;
+  color: #000;
 
   border-color:
     rgba(255,255,255,0.96);
@@ -499,11 +482,180 @@ a {
 }
 
 .button.primary:hover {
-  background:
-    #fff;
+  background: #fff;
 
   box-shadow:
     0 20px 55px rgba(255,255,255,0.12);
+}
+
+
+/* =========================================================
+   CINEMATIC VISUAL
+   ========================================================= */
+
+.visual-section {
+  padding:
+    0
+    0
+    130px;
+}
+
+.cinematic-image {
+  position: relative;
+
+  width: 100%;
+  height: 620px;
+
+  overflow: hidden;
+
+  border:
+    1px solid var(--glass-border);
+
+  border-radius: 38px;
+
+  background: #080808;
+
+  isolation: isolate;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    0 30px 100px rgba(0,0,0,0.65);
+
+  animation:
+    cinematicReveal
+    1.2s
+    0.25s
+    var(--premium)
+    both;
+}
+
+@keyframes cinematicReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(55px)
+      scale(0.975);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+.cinematic-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    grayscale(100%)
+    contrast(1.05)
+    brightness(0.82);
+
+  transform: scale(1.015);
+
+  transition:
+    transform 1.8s var(--premium),
+    filter 1.2s ease;
+}
+
+.cinematic-image:hover img {
+  transform: scale(1.055);
+
+  filter:
+    grayscale(100%)
+    contrast(1.08)
+    brightness(0.9);
+}
+
+.cinematic-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,0.04),
+      rgba(0,0,0,0.10) 40%,
+      rgba(0,0,0,0.78)
+    );
+
+  pointer-events: none;
+}
+
+.visual-glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -180px;
+  top: -180px;
+
+  z-index: 1;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  filter: blur(60px);
+
+  opacity: 0.45;
+
+  pointer-events: none;
+}
+
+.cinematic-image::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 1px;
+
+  z-index: 2;
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  border-radius: 37px;
+
+  pointer-events: none;
+}
+
+.cinematic-caption {
+  position: absolute;
+
+  left: 30px;
+  right: 30px;
+  bottom: 26px;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  color:
+    rgba(255,255,255,0.76);
+
+  font-size: 10px;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
 }
 
 
@@ -536,19 +688,16 @@ a {
   background:
     rgba(255,255,255,0.35);
 
-  transform:
-    scaleX(0);
+  transform: scaleX(0);
 
-  transform-origin:
-    left;
+  transform-origin: left;
 
   transition:
     transform 1s var(--premium);
 }
 
 .section:hover::before {
-  transform:
-    scaleX(1);
+  transform: scaleX(1);
 }
 
 .section-label {
@@ -556,15 +705,13 @@ a {
 
   margin-bottom: 20px;
 
-  color:
-    var(--gray-4);
+  color: var(--gray-4);
 
   font-size: 10px;
 
   letter-spacing: 3px;
 
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 }
 
 .section-title {
@@ -575,11 +722,9 @@ a {
   font-size:
     clamp(38px, 6vw, 70px);
 
-  line-height:
-    0.98;
+  line-height: 0.98;
 
-  letter-spacing:
-    -3px;
+  letter-spacing: -3px;
 }
 
 .section-description {
@@ -587,19 +732,16 @@ a {
 
   margin-bottom: 45px;
 
-  color:
-    var(--gray-3);
+  color: var(--gray-3);
 
-  font-size:
-    17px;
+  font-size: 17px;
 
-  line-height:
-    1.8;
+  line-height: 1.8;
 }
 
 
 /* =========================================================
-   FLOATING GLASS CARDS
+   GLASS CARDS
    ========================================================= */
 
 .grid {
@@ -625,8 +767,7 @@ a {
   border:
     1px solid var(--glass-border);
 
-  border-radius:
-    var(--radius);
+  border-radius: var(--radius);
 
   background:
     linear-gradient(
@@ -693,8 +834,7 @@ a {
   background:
     rgba(255,255,255,0.055);
 
-  filter:
-    blur(35px);
+  filter: blur(35px);
 
   opacity: 0;
 
@@ -727,8 +867,7 @@ a {
 }
 
 .card-number {
-  color:
-    var(--gray-4);
+  color: var(--gray-4);
 
   font-size: 10px;
 
@@ -739,8 +878,13 @@ a {
 }
 
 .card:hover .card-number {
-  color:
-    var(--gray-2);
+  color: var(--gray-2);
+}
+
+.card-content {
+  position: relative;
+
+  z-index: 1;
 }
 
 .card h3 {
@@ -749,29 +893,24 @@ a {
     0
     14px;
 
-  font-size:
-    28px;
+  font-size: 28px;
 
-  line-height:
-    1.2;
+  line-height: 1.2;
 
   transition:
     transform 0.55s var(--smooth);
 }
 
 .card:hover h3 {
-  transform:
-    translateX(8px);
+  transform: translateX(8px);
 }
 
 .card p {
   max-width: 450px;
 
-  color:
-    var(--gray-3);
+  color: var(--gray-3);
 
-  font-size:
-    14px;
+  font-size: 14px;
 
   transition:
     color 0.4s ease,
@@ -779,16 +918,14 @@ a {
 }
 
 .card:hover p {
-  color:
-    var(--gray-2);
+  color: var(--gray-2);
 
-  transform:
-    translateX(3px);
+  transform: translateX(3px);
 }
 
 
 /* =========================================================
-   ABOUT LINK
+   ABOUT
    ========================================================= */
 
 .about-preview {
@@ -806,20 +943,17 @@ a {
   border:
     1px solid var(--glass-border);
 
-  border-radius:
-    var(--pill);
+  border-radius: var(--pill);
 
-  background:
-    var(--glass);
+  background: var(--glass);
 
-  color:
-    var(--gray-2);
+  color: var(--gray-2);
 
-  font-size:
-    13px;
+  font-size: 13px;
 
-  backdrop-filter:
-    blur(15px);
+  backdrop-filter: blur(15px);
+
+  -webkit-backdrop-filter: blur(15px);
 
   transition:
     transform 0.5s var(--smooth),
@@ -829,11 +963,9 @@ a {
 }
 
 .text-link:hover {
-  transform:
-    translateX(6px);
+  transform: translateX(6px);
 
-  color:
-    var(--white);
+  color: var(--white);
 
   border-color:
     rgba(255,255,255,0.28);
@@ -844,7 +976,7 @@ a {
 
 
 /* =========================================================
-   CONTACT GLASS PANEL
+   CONTACT
    ========================================================= */
 
 .contact-box {
@@ -858,16 +990,14 @@ a {
 
   gap: 40px;
 
-  padding:
-    52px;
+  padding: 52px;
 
   overflow: hidden;
 
   border:
     1px solid var(--glass-border);
 
-  border-radius:
-    var(--radius);
+  border-radius: var(--radius);
 
   background:
     linear-gradient(
@@ -911,8 +1041,7 @@ a {
 }
 
 .contact-box:hover {
-  transform:
-    translateY(-8px);
+  transform: translateY(-8px);
 
   border-color:
     rgba(255,255,255,0.28);
@@ -923,22 +1052,18 @@ a {
 }
 
 .contact-box h2 {
-  margin-bottom:
-    16px;
+  margin-bottom: 16px;
 
   font-size:
     clamp(32px, 5vw, 55px);
 
-  line-height:
-    1;
+  line-height: 1;
 
-  letter-spacing:
-    -2px;
+  letter-spacing: -2px;
 }
 
 .contact-box p {
-  color:
-    var(--gray-3);
+  color: var(--gray-3);
 }
 
 
@@ -954,11 +1079,9 @@ footer {
   border-top:
     1px solid rgba(255,255,255,0.07);
 
-  color:
-    var(--gray-4);
+  color: var(--gray-4);
 
-  font-size:
-    12px;
+  font-size: 12px;
 }
 
 
@@ -1000,8 +1123,7 @@ footer {
 
     margin-top: 10px;
 
-    border-radius:
-      24px;
+    border-radius: 24px;
   }
 
   .nav-inner {
@@ -1026,30 +1148,49 @@ footer {
     padding:
       100px
       0
-      120px;
+      90px;
   }
 
   .hero h1 {
-    letter-spacing:
-      -4px;
+    letter-spacing: -4px;
   }
 
   .hero-text {
-    font-size:
-      16px;
+    font-size: 16px;
+  }
+
+  .visual-section {
+    padding-bottom: 90px;
+  }
+
+  .cinematic-image {
+    height: 430px;
+
+    border-radius: 28px;
+  }
+
+  .cinematic-image::after {
+    border-radius: 27px;
+  }
+
+  .cinematic-caption {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
   }
 
   .grid {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
   .card {
-    min-height:
-      280px;
+    min-height: 280px;
 
-    border-radius:
-      24px;
+    border-radius: 24px;
   }
 
   .card:hover {
@@ -1059,17 +1200,13 @@ footer {
   }
 
   .contact-box {
-    flex-direction:
-      column;
+    flex-direction: column;
 
-    align-items:
-      flex-start;
+    align-items: flex-start;
 
-    padding:
-      34px;
+    padding: 34px;
 
-    border-radius:
-      24px;
+    border-radius: 24px;
   }
 
 }
@@ -1082,44 +1219,61 @@ footer {
 @media (max-width: 500px) {
 
   .container {
-    width:
-      90%;
+    width: 90%;
   }
 
   .logo {
-    font-size:
-      12px;
+    font-size: 12px;
 
-    letter-spacing:
-      1.2px;
+    letter-spacing: 1.2px;
   }
 
   .nav-links {
-    gap:
-      8px;
+    gap: 8px;
   }
 
   .nav-links a {
-    font-size:
-      9px;
+    font-size: 9px;
   }
 
   .hero {
-    padding-top:
-      80px;
+    padding-top: 80px;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 16vw, 76px);
+
+    letter-spacing: -4px;
   }
 
   .buttons {
-    flex-direction:
-      column;
+    flex-direction: column;
 
-    align-items:
-      stretch;
+    align-items: stretch;
   }
 
   .button {
-    width:
-      100%;
+    width: 100%;
+  }
+
+  .visual-section {
+    padding-bottom: 80px;
+  }
+
+  .cinematic-image {
+    height: 350px;
+
+    border-radius: 24px;
+  }
+
+  .cinematic-image::after {
+    border-radius: 23px;
+  }
+
+  .cinematic-caption {
+    left: 17px;
+    right: 17px;
+    bottom: 17px;
   }
 
   .section {
@@ -1128,22 +1282,44 @@ footer {
       0;
   }
 
-  .card {
-    padding:
-      29px;
+  .section-title {
+    letter-spacing: -2px;
+  }
 
-    border-radius:
-      22px;
+  .card {
+    padding: 29px;
+
+    border-radius: 22px;
   }
 
   .card h3 {
-    margin-top:
-      60px;
+    margin-top: 60px;
   }
 
   .contact-box {
-    padding:
-      29px;
+    padding: 29px;
+  }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) {
+
+  .navbar:hover,
+  .button:hover,
+  .card:hover,
+  .contact-box:hover,
+  .eyebrow:hover,
+  .text-link:hover {
+    transform: none;
+  }
+
+  .cinematic-image:hover img {
+    transform: scale(1.015);
   }
 
 }
@@ -1156,8 +1332,7 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
   html {
-    scroll-behavior:
-      auto;
+    scroll-behavior: auto;
   }
 
   *,
@@ -1174,4 +1349,3 @@ footer {
   }
 
 }
-
